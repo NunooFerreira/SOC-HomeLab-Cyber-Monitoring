@@ -33,16 +33,6 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 - Document attack vectors, detection methods, and mitigation strategies.
 
 
-### Tools and Technologies
-- **pfSense** – Using it as a Open-source firewall and router.
-- **Active Directory (AD)** – Centralized authentication and identity management.
-- **Windows Workstation** – Target machine for monitoring and attack simulations.
-- **Sysmon** – Windows system monitoring for detailed logging.
-- **CrowdSec** – Collaborative security tool for intrusion detection and IP banning.
-
-
-
-
 
 
 ## Lab Architecture
