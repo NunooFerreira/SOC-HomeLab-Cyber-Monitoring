@@ -123,3 +123,54 @@ cscli.exe collections install crowdsecurity/windows-firewall
 
 **This README will evolve as new detections and mitigations are added.**
 
+
+# SOC Lab - Cybersecurity Detection and Monitoring
+
+## Overview
+This project sets up a **Security Operations Center (SOC) Lab** to simulate, detect, and analyze common cyberattacks. It integrates multiple tools to provide monitoring, logging, and threat detection across a virtualized environment.
+
+## Project Structure
+
+| Component             | Purpose                                 |
+|-----------------------|-----------------------------------------|
+| **pfSense**           | Network firewall and traffic management |
+| **Active Directory**  | Centralized user and domain management  |
+| **Windows Workstation**| Simulates user endpoint for testing    |
+| **Sysmon**            | Advanced logging for Windows events     |
+| **CrowdSec**          | Detects and mitigates malicious activity|
+
+### Network Configuration
+
+| Device                 | IP Address       | Gateway        | Subnet Mask     |
+|------------------------|------------------|----------------|-----------------|
+| pfSense (Firewall)     | 192.168.10.1     | -              | 255.255.255.0   |
+| Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   |
+| Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   |
+
+## Tools and Usage
+
+1. **pfSense**: Acts as a network firewall to control and monitor traffic between virtual machines.
+2. **Active Directory (AD)**: Manages users and devices in a centralized domain (e.g., `soc.lab`).
+3. **Windows Workstation**: Simulates a user machine to execute and detect malicious activities.
+4. **Sysmon**: Provides advanced event logging to monitor system-level activity on Windows.
+5. **CrowdSec**: Detects and mitigates threats like brute-force attacks and unauthorized access.
+
+## Objectives
+- Simulate real-world cyberattacks (e.g., RDP brute force, port scanning).
+- Use **Sysmon** and **CrowdSec** to monitor, detect, and mitigate attacks.
+- Document attack vectors, detection methods, and mitigation strategies.
+
+## Next Steps
+1. **Simulate Attacks:** Perform RDP brute force, port scans, and other malicious activities.
+2. **Monitor Logs:** Use Sysmon and CrowdSec to capture and analyze activity logs.
+3. **Document Findings:** Record detection methods and evidence for each attack.
+
+## Future Enhancements
+- Automate alerts via pfSense and CrowdSec.
+- Implement advanced attack scenarios (e.g., data exfiltration, privilege escalation).
+- Extend monitoring to Linux-based systems.
+
+Stay tuned for further updates and detailed attack detection analysis.
+
+
+
