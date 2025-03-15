@@ -19,6 +19,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 | Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   |
 | Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   |
 
+
 ## Tools and Usage
 
 1. **pfSense**: Acts as a network firewall to control and monitor traffic between virtual machines.
@@ -31,7 +32,6 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 - Simulate real-world cyberattacks (e.g., RDP brute force, port scanning).
 - Use **Sysmon** and **CrowdSec** to monitor, detect, and mitigate attacks.
 - Document attack vectors, detection methods, and mitigation strategies.
-
 
 
 
