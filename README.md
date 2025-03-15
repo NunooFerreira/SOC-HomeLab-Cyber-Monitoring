@@ -27,7 +27,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 3. **Windows Workstation**: Simulates a user machine to execute and detect malicious activities.
 4. **Sysmon**: Provides advanced event logging to monitor system-level activity on Windows.
 5. **CrowdSec**: Detects and mitigates threats like brute-force attacks and unauthorized access.
-
+6. **[BadBlood](https://github.com/davidprowe/BadBlood)** (by David Prowe): Populates the Active Directory with intentional Users and Groups with misconfigurations (e.g., weak passwords, excessive privileges) to simulate real-world vulnerabilities.  
 ## Objectives
 - Simulate real-world cyberattacks (e.g., RDP brute force, port scanning).
 - Use **Sysmon** and **CrowdSec** to monitor, detect, and mitigate attacks.
