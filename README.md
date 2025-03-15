@@ -8,7 +8,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 - **Sysmon** – Windows system monitoring for detailed logging.
 - **CrowdSec** – Collaborative security tool for intrusion detection and IP banning.
 
-## 🏗️ Lab Architecture
+## Lab Architecture
 ```
 +----------------------+           +-----------------------+
 |      pfSense         | <----->  | Windows Active Directory|
@@ -23,9 +23,9 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
    +------------------+              +-------------------+
 ```
 
-## 🛠️ Configurations
+## Configurations
 
-### 1. ✅ **pfSense Configuration**
+### 1. **pfSense Configuration**
 - **Install and set up pfSense** as the core firewall for the lab network.
 - Ensure **logging** is enabled for packet filtering and traffic monitoring.
 
@@ -33,7 +33,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 1. Go to **Status > System Logs > Firewall**.
 2. Ensure logging for all relevant traffic is active.
 
-### 2. ✅ **Active Directory (AD) Setup**
+### 2. **Active Directory (AD) Setup**
 - **Windows Server 2022** configured as an Active Directory Domain Controller.
 
 #### Key AD Configurations:
@@ -41,7 +41,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 - IP Address: `192.168.1.20`
 - Ensure Event Logging for **user logins** and **authentication failures**.
 
-### 3. ✅ **Windows Workstation Setup**
+### 3. **Windows Workstation Setup**
 - **Windows 10** as a target machine for **attack simulations**.
 - Enabled **Remote Desktop Protocol (RDP)** for brute-force simulations.
 
@@ -49,7 +49,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 1. **Control Panel > System and Security > Remote Desktop**
 2. Select **Allow Remote Connections**
 
-### 4. ✅ **Sysmon Configuration**
+### 4. **Sysmon Configuration**
 
 - **System Monitor (Sysmon)** is installed for detailed Windows event logging.
 
@@ -64,7 +64,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 Application and Services Logs > Microsoft > Windows > Sysmon
    ```
 
-### 5. ✅ **CrowdSec Configuration**
+### 5. **CrowdSec Configuration**
 
 - Installed **CrowdSec** on the Windows Workstation.
 - Configured to monitor **Windows Event Logs** and **firewall logs**.
@@ -104,22 +104,22 @@ cscli.exe collections install crowdsecurity/windows-firewall
 .\cscli.exe alerts list
 ```
 
-### 6. ✅ **Integrate CrowdSec with pfSense**
+### 6. **Integrate CrowdSec with pfSense**
 
 1. Install **CrowdSec Bouncer** on pfSense.
 2. Verify that pfSense blocks malicious IPs based on CrowdSec detections.
 
-## 📊 Next Steps
+## Next Steps
 1. Simulate cyberattacks (e.g., **RDP brute-force**, **port scans**).
 2. Capture logs and confirm detection in **CrowdSec** and **Sysmon**.
 3. Document how to detect, analyze, and mitigate threats.
 
-## 📄 Future Additions
+## Future Additions
 - Implement advanced detection scenarios (e.g., **lateral movement** and **privilege escalation**).
 - Automate alerting and IP blocking using **CrowdSec + pfSense**.
 - Document and export findings into a professional PDF report.
 
 ---
 
-📝 **This README will evolve as new detections and mitigations are added.**
+**This README will evolve as new detections and mitigations are added.**
 
