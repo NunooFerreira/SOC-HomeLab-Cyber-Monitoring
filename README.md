@@ -35,21 +35,6 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 
 
 
-## Lab Architecture
-```
-+----------------------+           +-----------------------+
-|      pfSense         | <----->  | Windows Active Directory|
-| (Firewall & Router)  |           | (192.168.1.20)        |
-| (192.168.1.1)        |           +-----------------------+
-+----------------------+                     │
-           │                                  │
-           │                                  │
-   +------------------+              +-------------------+
-   | Windows Workstation| <----->    | CrowdSec & Sysmon |
-   | (192.168.1.10)    |              | (192.168.1.10)    |
-   +------------------+              +-------------------+
-```
-
 ## Configurations
 
 ### 1. **pfSense Configuration**
