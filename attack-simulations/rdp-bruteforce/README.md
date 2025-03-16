@@ -17,8 +17,11 @@ After simulating the attack, We can see that CrowdSec has detected the brute-for
 +----+----------------+-----------+---------+----------------------+--------+------------+
 
 
+
+
+
+
+(screenshoot instead of the image).
+´
+
 ![Captura de ecrã 2025-03-16 041244](https://github.com/user-attachments/assets/34501442-2c73-4697-a19d-5d397f631ab2)
-
-
-
-(screenshoot instead of the image)
