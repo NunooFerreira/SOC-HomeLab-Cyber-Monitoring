@@ -1,0 +1,13 @@
+root
+admin
+test
+guest
+info
+adm
+mysql
+administrator
+orcale
+ftp
+pi
+puppet
+ansible
