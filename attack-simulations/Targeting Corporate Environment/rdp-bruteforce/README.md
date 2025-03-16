@@ -6,6 +6,8 @@
   - IP Address: `192.168.10.10`
   - Domain: `soclab.local`
   - Vulnerable Users: Populated by **BadBlood**
+ 
+  Assuming the Attacker has the list of the names of the domain beacuse they got leaked.
 
 - **Attacker:** Kali Linux
   - IP Address: `192.168.20.30`
