@@ -16,6 +16,6 @@ After simulating the attack, We can see that CrowdSec has detected the brute-for
 | 42 | Ip:1.2.3.4     | rdp-bf    | ban     | 192.168.10.30       | US      | Kali Linux |
 +----+----------------+-----------+---------+----------------------+--------+------------+
 
-![image](https://github.com/user-attachments/assets/d65fe0ce-e5ba-4683-86a1-fbd7762003da)
+![image](https://github.com/user-attachments/assets/9afef49f-2aae-4b65-84d4-33d6994b2ee2)
 
 (screenshoot instead of the image)
