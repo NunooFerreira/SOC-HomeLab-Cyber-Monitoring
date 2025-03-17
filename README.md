@@ -13,11 +13,12 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 
 ### Network Configuration
 
-| Device                 | IP Address       | Gateway        | Subnet Mask     |
-|------------------------|------------------|----------------|-----------------|
-| pfSense (Firewall)     | 192.168.10.1     | -              | 255.255.255.0   |
-| Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   |
-| Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   |
+| Device                 | IP Address       | Gateway        | Subnet Mask     | Zone    |
+|------------------------|------------------|----------------|-----------------|---------|
+| pfSense (Firewall)     | 192.168.10.1     | -              | 255.255.255.0   |         |
+| Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   | LAN  |
+| Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   | LAN     |
+| Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DNZ     |
 
 
 ## Tools and Usage
