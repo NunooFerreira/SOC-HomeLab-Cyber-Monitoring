@@ -18,16 +18,16 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 | pfSense (Firewall)     | 192.168.10.1     | -              | 255.255.255.0   |         |
 | Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   | LAN  |
 | Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   | LAN     |
-| Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DNZ     |
+| Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DMZ     |
 
 
 ## Tools and Usage
 
 1. **pfSense**: Acts as a network firewall to control and monitor traffic between virtual machines.
-2. **Active Directory (AD)**: Manages users and devices in a centralized domain (e.g., `soc.lab`).
-3. **Windows Workstation**: Simulates a user machine to execute and detect malicious activities.
+2. **Active Directory (AD)**: Manages users and devices in a centralized domain (`soc.lab`).
+3. **Windows Workstation**: Simulates personal user machine to detect malicious activities.
 4. **Sysmon**: Provides advanced event logging to monitor system-level activity on Windows.
-5. **CrowdSec**: Detects and mitigates threats like brute-force attacks and unauthorized access.
+5. **CrowdSec**: Detects and mitigates threats.
 6. **[BadBlood](https://github.com/davidprowe/BadBlood)**: Populates the Active Directory with intentional Users and Groups with misconfigurations (e.g., weak passwords, excessive privileges) to simulate real-world vulnerabilities.  
 
 
@@ -65,53 +65,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 #### Install Sysmon:
 1. Download Sysmon from [Microsoft Sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon).
 2. Execute the installer:
-   ```powershell
-   sysmon -accepteula -i sysmonconfig.xml
-   ```
-3. Verify logs in the **Event Viewer** under:
-   ```
-Application and Services Logs > Microsoft > Windows > Sysmon
-   ```
 
-### 5. **CrowdSec Configuration**
-
-- Installed **CrowdSec** on the Windows Workstation.
-- Configured to monitor **Windows Event Logs** and **firewall logs**.
-
-#### Verify CrowdSec Status:
-```powershell
-cd "C:\Program Files\CrowdSec"
-.\cscli.exe config show
-```
-
-#### Acquisition File (`acquis.yaml`):
-```yaml
-##RDP
-source: wineventlog
-event_channel: Security
-event_ids:
-  - 4625
-labels:
-  type: eventlog
----
-##Firewall
-filenames:
-  - C:\Windows\System32\LogFiles\Firewall\*.log
-labels:
-  type: windows-firewall
-```
-
-#### Update CrowdSec Collections:
-```powershell
-cscli.exe hub update
-cscli.exe collections install crowdsecurity/windows
-cscli.exe collections install crowdsecurity/windows-firewall
-```
-
-#### Check Alerts:
-```powershell
-.\cscli.exe alerts list
-```
 
 ### 6. **Integrate CrowdSec with pfSense**
 
