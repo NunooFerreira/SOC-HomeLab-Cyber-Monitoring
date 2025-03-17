@@ -36,55 +36,23 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 
 ### 1. **pfSense Configuration**
 - **Install and set up pfSense** as the core firewall for the lab network.
-- Ensure **logging** is enabled for packet filtering and traffic monitoring.
-
-#### Enable Firewall Logging:
-1. Go to **Status > System Logs > Firewall**.
-2. Ensure logging for all relevant traffic is active.
 
 ### 2. **Active Directory (AD) Setup**
 - **Windows Server 2022** configured as an Active Directory Domain Controller.
 
-#### Key AD Configurations:
-- Domain Name: `lab.local`
-- IP Address: `192.168.1.20`
-- Ensure Event Logging for **user logins** and **authentication failures**.
-
 ### 3. **Windows Workstation Setup**
 - **Windows 10** as a target machine for **attack simulations**.
-- Enabled **Remote Desktop Protocol (RDP)** for brute-force simulations.
-
-#### Enable RDP:
-1. **Control Panel > System and Security > Remote Desktop**
-2. Select **Allow Remote Connections**
 
 ### 4. **Sysmon Configuration**
-
 - **System Monitor (Sysmon)** is installed for detailed Windows event logging.
 
 #### Install Sysmon:
-1. Download Sysmon from [Microsoft Sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon).
-2. Execute the installer:
-
+1. Download Sysmon from [Microsoft Sysinternals](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon), and execute the installer.
 
 ### 6. **Integrate CrowdSec with pfSense**
-
 1. Install **CrowdSec Bouncer** on pfSense.
-2. Verify that pfSense blocks malicious IPs based on CrowdSec detections.
 
-## Next Steps
-1. Simulate cyberattacks (e.g., **RDP brute-force**, **port scans**).
-2. Capture logs and confirm detection in **CrowdSec** and **Sysmon**.
-3. Document how to detect, analyze, and mitigate threats.
 
-## Future Additions
-- Implement advanced detection scenarios (e.g., **lateral movement** and **privilege escalation**).
-- Automate alerting and IP blocking using **CrowdSec + pfSense**.
-- Document and export findings into a professional PDF report.
-
----
-
-**This README will evolve as new detections and mitigations are added.**
 
 
 
