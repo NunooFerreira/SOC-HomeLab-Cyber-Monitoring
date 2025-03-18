@@ -54,5 +54,6 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 
 
 
+Next Steps...
 
 
