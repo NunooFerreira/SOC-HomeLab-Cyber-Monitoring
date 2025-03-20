@@ -33,8 +33,19 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 
 ![kerberos](https://github.com/user-attachments/assets/c4501f99-27a2-4924-9537-f8f9c520d466)
 
+**3. Disabling the Windows Firewall (Sysmon)**
 
-**3. File Creation and Directory Logs (Sysmon)**
+After gaining access, I analyzed Sysmon logs to detect further suspicious activity. At 02:56:25 (UTC), I found an entry showing that the attacker executed  super suspissious the netsh command to disable the Windows Firewall across all profiles.
+
+This action suggests that the attacker was attempting to weaken the system's network to facilitate outbound connections.
+
+Here is the Sysmon Event ID 1 (Process Creation) log:
+
+![firewall](https://github.com/user-attachments/assets/8f279c2e-edd7-42e6-ae79-7cc8fc1c233e)
+
+
+
+**4. File Creation and Directory Logs (Sysmon)**
 
 - To gain deeper insights into user activities, I turned to Sysmon logs, which provided a detailed process and deeper information, looking for Event ID 1 (Process Creation).
 
@@ -48,7 +59,7 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 This confirms that the attacker compressed sensitive files into a .zip archive for potential exfiltration.
 
 
-**4. Suspicious Network Connection (Sysmon)**
+**5. Suspicious Network Connection (Sysmon)**
 
 - After that, just 1 miute right after, in the Sysmon logs, I found a suspicious network connection logged under Event ID 3 (Network Connection). This entry shows that the Windows machine (192.168.10.20) established a connection to the kali’s IP address (192.168.20.30) over port 4444, which is a non-standard port often used in reverse shells and data exfiltration activities, which may mean that the attacker tried to send the data.zip fille on this Network Connection.
 
