@@ -47,3 +47,15 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 
 This confirms that the attacker compressed sensitive files into a .zip archive for potential exfiltration.
 
+
+**4. Suspicious Network Connection (Sysmon)**
+
+- After that, just 1 miute right after, in the Sysmon logs, I found a suspicious network connection logged under Event ID 3 (Network Connection). This entry shows that the Windows machine (192.168.10.20) established a connection to the kali’s IP address (192.168.20.30) over port 4444, which is a non-standard port often used in reverse shells and data exfiltration activities, which may mean that the attacker tried to send the data.zip fille on this Network Connection.
+
+Here is the Sysmon Event ID 3 (Network Connection) log:
+
+![netcat](https://github.com/user-attachments/assets/35cc0c0e-55c7-4c0c-8972-4db73f1b77f2)
+
+
+
+
