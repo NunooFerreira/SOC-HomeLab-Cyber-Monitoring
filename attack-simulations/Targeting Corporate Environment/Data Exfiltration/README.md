@@ -38,9 +38,9 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 
 - To gain deeper insights into user activities, I turned to Sysmon logs, which provided a detailed process and deeper information, looking for Event ID 1 (Process Creation).
 
-With that, I found an entry that shows the attacker used PowerShell to create a compressed archive named data.zip from a directory named data. This occurred at 02:57:18 (UTC).
+- With that, I found an entry that shows the attacker used PowerShell to create a compressed archive named data.zip from a directory named data. This occurred at 02:57:18 (UTC).
 
-Here is the Sysmon Event ID 1 (Process Creation) log:
+- Here is the Sysmon Event ID 1 (Process Creation) log:
 
 ![Datazip](https://github.com/user-attachments/assets/dfe40ac0-a367-46d9-867a-e8619a491b94)
 
