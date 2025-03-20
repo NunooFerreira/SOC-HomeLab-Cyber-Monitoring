@@ -31,7 +31,7 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 
 ## **Monitoring Windows Logs**
 
-## **1. Credential Validation Attempt
+## **1. Credential Validation Attempt**
 First, we can see that the attacker  with the name: kali attempted to validate credentials for the labadmin user, which was logged as a successful authentication in the Windows Event Viewer:
 
 ![Succefull_validated](https://github.com/user-attachments/assets/4adf116e-0ef2-429e-938c-637fb25e51be)
