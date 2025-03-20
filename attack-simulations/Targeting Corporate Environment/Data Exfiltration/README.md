@@ -6,7 +6,7 @@
   - IP Address: 192.168.10.20 
   - Domain: `soclab.local`
 
-- **Attacker: Kali Linux 
+- **Attacker: Kali Linux**
   - IP Address: 192.168.20.30
 
 From the last brute force attack:
