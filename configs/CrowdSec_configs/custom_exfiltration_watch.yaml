@@ -1,0 +1,13 @@
+#This detects port 4444 and blocks the attacker for 10 minutes.
+type: leaky
+name: custom_exfiltration_watch
+description: "Detects suspicious outbound connections (e.g., port 4444)"
+filter: |
+  evt.Meta.log_type == 'sysmon' &&
+  evt.Meta.event_id == '3' &&
+  evt.Parsed.destination_port == '4444'
+capacity: 1
+leak_speed: "10s"
+blackhole: 10m
+labels:
+  service: exfiltration

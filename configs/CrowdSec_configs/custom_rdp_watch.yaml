@@ -1,0 +1,13 @@
+# This blocks an IP making 3 or more RDP logins within 10 seconds.
+type: leaky
+name: custom_rdp_watch
+description: "Detects suspicious RDP login attempts"
+filter: |
+  evt.Meta.log_type == 'windows_event' &&
+  evt.Meta.event_id == '4624' &&
+  evt.Parsed.TargetUserName == 'labadmin'
+capacity: 3
+leak_speed: "10s"
+blackhole: 5m
+labels:
+  service: rdp

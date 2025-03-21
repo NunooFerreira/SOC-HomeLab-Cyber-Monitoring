@@ -1,0 +1,13 @@
+# This blocks IPs that generate ≥ 5 Kerberos ticket requests within 10 seconds.
+type: leaky
+name: custom_kerberos_attack
+description: "Detecting potential Kerberoasting attempts"
+filter: |
+  evt.Meta.log_type == 'windows_event' &&
+  evt.Meta.source_ip != '192.168.10.10' &&
+  evt.Meta.event_id == '4769'
+labels:
+  service: kerberos
+capacity: 5
+leak_speed: "10s"
+blackhole: 5m

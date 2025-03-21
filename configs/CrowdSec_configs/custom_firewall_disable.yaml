@@ -1,0 +1,13 @@
+#This blocks IPs where netsh disables the firewall.
+type: leaky
+name: custom_firewall_disable
+description: "Detects attempts to disable Windows Firewall"
+filter: |
+  evt.Meta.log_type == 'windows_event' &&
+  evt.Meta.event_id == '1' &&
+  evt.Parsed.CommandLine == '*netsh advfirewall*off*'
+capacity: 1
+leak_speed: "1m"
+blackhole: 10m
+labels:
+  service: windows
