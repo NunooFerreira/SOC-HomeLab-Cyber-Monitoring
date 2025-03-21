@@ -36,3 +36,41 @@ hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracke
 
 
 ## **Monitoring Windows Logs**
+
+I started watching Sysmon Logs Analysis and found out that Kali's IP was trying to communicate:
+**Event ID 1 – Process Creation:**
+
+Screenshot 
+
+Then, right after I Identified multiple Event ID 3 entries in Sysmon logs, which makes it suspisious, knowing its coming from the same IP, and from external zone (DMZ): 
+
+- All connections originated from IP 192.168.10.10, targeting 192.168.20.30.
+
+- Different ephemeral ports were used, suggesting automated scanning or even communication.
+
+Screenshots.
+
+
+
+** Windows Security Logs Analysis:
+
+Event ID 4769 – Kerberos Service Ticket Request:
+
+Found a large number of Event ID 4769 entries from the same source IP 192.168.10.10.
+
+The requests were directed to various user accounts in the SOC.LAB domain.
+
+This suggests the use of a Kerberoasting attack to extract Service Principal Names (SPNs).
+
+Event ID 4634 – Logoff:
+
+Immediately after the Kerberos ticket requests, there was an Event ID 4634.
+
+User: SOC\labadmin
+
+Logon Type: 3 (Network Logon – consistent with remote access).
+
+This indicates a potential attacker logging off after completing ticket extraction.
+
+Conclusion:
+The log analysis confirms the execution of a Kerberoasting attack. The attacker, using IP 192.168.20.30, scanned the Domain Controller (192.168.10.10), extracted SPNs, and likely proceeded to crack the Kerberos TGS hashes offline. The sequence of Event IDs (1, 3, 4769, and 4634) aligns with common Kerberoasting techniques used for credential compromise.
