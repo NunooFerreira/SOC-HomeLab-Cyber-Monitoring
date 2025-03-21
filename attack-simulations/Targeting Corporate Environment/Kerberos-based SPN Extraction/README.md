@@ -47,25 +47,22 @@ I started watching Sysmon Logs Analysis and identified multiple Event ID 3 entri
 
 
 
-** Windows Security Logs Analysis:
+With that, I went through Windows Logs Security, and found multiple found a large number of **Event ID 4769 – Kerberos Service Ticket Request**, from the same source:
 
-Event ID 4769 – Kerberos Service Ticket Request:
+And as we can see in the screenshots output from the logs, the same IP: 192.168.20.30 requested multiple Kerberos Service Tickets (Event ID 4769) for various user accounts in the SOC.LAB domain. This pattern of activity suggests the use of a **Kerberoasting attack**, where the attacker queries the Service Principal Names (SPNs) associated with these accounts to obtain encrypted TGS (Ticket Granting Service) hashes, which we already know he did.
 
-Found a large number of Event ID 4769 entries from the same source IP 192.168.10.10.
+And finally, right after the last Kerberos Service Ticket Request, we see an Event ID 4634 – Logoff, from the user labadmin, so with that, we know whose password was first compromised to successfully request all this content.
 
-The requests were directed to various user accounts in the SOC.LAB domain.
+## **Firewall Rules on pfSense to Mitigate this:**
+1- Block Unauthorized Kerberos Requests:
+  Screenshot da rule no pfsense....
 
-This suggests the use of a Kerberoasting attack to extract Service Principal Names (SPNs).
+  This rule blocks any Kerberos traffic (port 88) from devices that are not domain controllers, which prevents unauthorized users from interacting with the Kerberos service and reduces the risk of Kerberoasting.
 
-Event ID 4634 – Logoff:
+2- Limit External and Internal LDAP Queries:
 
-Immediately after the Kerberos ticket requests, there was an Event ID 4634.
+Screenshot da rule.......
 
-User: SOC\labadmin
+This prevents attackers from using LDAP enumeration tools (like GetUserSPNs.py), a well knowed script, to extract Service Principal Names. LDAP is only needed for trusted systems—blocking it for regular users reduces exposure, like we've just seen.
 
-Logon Type: 3 (Network Logon – consistent with remote access).
-
-This indicates a potential attacker logging off after completing ticket extraction.
-
-Conclusion:
-The log analysis confirms the execution of a Kerberoasting attack. The attacker, using IP 192.168.20.30, scanned the Domain Controller (192.168.10.10), extracted SPNs, and likely proceeded to crack the Kerberos TGS hashes offline. The sequence of Event IDs (1, 3, 4769, and 4634) aligns with common Kerberoasting techniques used for credential compromise.
+Note: In this experiment, CrowdSec was disabled to allow this action to proceed.
