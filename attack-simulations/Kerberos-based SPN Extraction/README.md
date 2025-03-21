@@ -71,7 +71,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
   - ![logoff](https://github.com/user-attachments/assets/11d039c9-4803-432e-ae34-a427b6db934a)
 
 
-## **Firewall Rules on pfSense to Mitigate this:**
+## **Firewall Rules on pfSense:**
 1- **Create an Alias for Internal Systems:**
 
  - ![aliases](https://github.com/user-attachments/assets/103ebae0-d0c5-4883-b196-d6356225c08c)
@@ -89,5 +89,5 @@ Explanation:
 Explanation
 - This prevents attackers from using LDAP enumeration tools (like GetUserSPNs.py), a well knowed script, to extract Service Principal Names. LDAP is only needed for trusted systems—blocking it for regular users reduces exposure, like we've just seen.
 
-Note: In this experiment, CrowdSec was disabled to allow this action to proceed.
+Note: In this experiment, CrowdSec was disabled to allow this action to proceed, but the rules are on the configs directory.
 
