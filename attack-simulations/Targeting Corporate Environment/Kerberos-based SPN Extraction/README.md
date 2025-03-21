@@ -86,7 +86,8 @@ Explanation:
 3- **Limit External and Internal LDAP Queries:**
 - ![rule3](https://github.com/user-attachments/assets/d31cc115-efc6-4a93-b269-133962b478db)
 
-This prevents attackers from using LDAP enumeration tools (like GetUserSPNs.py), a well knowed script, to extract Service Principal Names. LDAP is only needed for trusted systems—blocking it for regular users reduces exposure, like we've just seen.
+Explanation
+- This prevents attackers from using LDAP enumeration tools (like GetUserSPNs.py), a well knowed script, to extract Service Principal Names. LDAP is only needed for trusted systems—blocking it for regular users reduces exposure, like we've just seen.
 
 Note: In this experiment, CrowdSec was disabled to allow this action to proceed.
 
