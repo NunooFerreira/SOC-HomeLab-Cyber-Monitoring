@@ -49,7 +49,17 @@ I started watching Sysmon Logs Analysis and identified multiple Event ID 3 entri
 
 With that, I went through Windows Logs Security, and found multiple found a large number of **Event ID 4769 – Kerberos Service Ticket Request**, from the same source:
 
+- ![kerberos_tickets](https://github.com/user-attachments/assets/9275278e-067c-466c-a2bd-3fc551e18f81)
+
+
+
 And as we can see in the screenshots output from the logs, the same IP: 192.168.20.30 requested multiple Kerberos Service Tickets (Event ID 4769) for various user accounts in the SOC.LAB domain. This pattern of activity suggests the use of a **Kerberoasting attack**, where the attacker queries the Service Principal Names (SPNs) associated with these accounts to obtain encrypted TGS (Ticket Granting Service) hashes, which we already know he did.
+
+- User Jordan:
+  - ![Jordan](https://github.com/user-attachments/assets/4aab463d-1130-48ea-affc-d23800dd389f)
+
+- User Candace:
+  - ![candace_rojas](https://github.com/user-attachments/assets/0fa652ef-089b-4bde-97b4-280412b502bf)
 
 And finally, right after the last Kerberos Service Ticket Request, we see an Event ID 4634 – Logoff, from the user labadmin, so with that, we know whose password was first compromised to successfully request all this content.
 
