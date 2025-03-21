@@ -81,7 +81,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
  - ![firstrule](https://github.com/user-attachments/assets/116965fc-3f84-4b72-b76b-414d10214746)
 
 Explanation:
-- This rule blocks any Kerberos traffic (port 88) from devices that are not domain controllers, which prevents unauthorized users from interacting with the Kerberos service and reduces the risk of Kerberoasting.
+- This rule blocks any Kerberos traffic (port 88) from devices that are not domain controllers (!Alias, that I created in rule 1), which prevents unauthorized users from interacting with the Kerberos service and reduces the risk of Kerberoasting.
 
 3- **Limit External and Internal LDAP Queries:**
 - ![rule3](https://github.com/user-attachments/assets/d31cc115-efc6-4a93-b269-133962b478db)
