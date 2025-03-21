@@ -69,7 +69,7 @@ Here we can see the Sysmon Event ID 3 (Network Connection) log:
 
 
 
-## **Firewall Rules on pfSense to Mitigate this:**
+## **Firewall Rules on pfSense:**
 
 1- **Create an Alias for Internal Systems:**
 
