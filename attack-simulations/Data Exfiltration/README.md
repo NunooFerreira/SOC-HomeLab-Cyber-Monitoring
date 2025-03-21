@@ -63,9 +63,45 @@ This confirms that the attacker compressed sensitive files into a .zip archive f
 
 - After that, just 1 miute right after, in the Sysmon logs, I found a suspicious network connection logged under Event ID 3 (Network Connection). This entry shows that the Windows machine (192.168.10.20) established a connection to the kali’s IP address (192.168.20.30) over port 4444, which is a non-standard port often used in reverse shells and data exfiltration activities, which may mean that the attacker tried to send the data.zip fille on this Network Connection.
 
-Here is the Sysmon Event ID 3 (Network Connection) log:
+Here we can see the Sysmon Event ID 3 (Network Connection) log:
 
 ![netcat](https://github.com/user-attachments/assets/35cc0c0e-55c7-4c0c-8972-4db73f1b77f2)
+
+
+
+## **Firewall Rules on pfSense to Mitigate this:**
+
+1- **Create an Alias for Internal Systems:**
+
+- ![rule1](https://github.com/user-attachments/assets/a05efab9-6c65-46b9-9ba9-350ee7470d62)
+
+Explanation:
+ - This limits RDP access to trusted internal devices (from Network: 192.168.10.0/24)
+
+
+2- **Block Unauthorized Kerberos Requests:**
+
+- ![rule2](https://github.com/user-attachments/assets/d3a12053-ea1f-483f-ad70-11f24596919b)
+
+Explanation:
+- This blocks port 4444 and other non-standard ports that kali used for reverse shells.
+
+
+3- **Limit External and Internal LDAP Queries:**
+
+- ![rule3](https://github.com/user-attachments/assets/98eeeb87-f991-49f5-8b85-fcb567f4de7b)
+
+
+Explanation:
+-  This prevents exfiltration via FTP/SSH/HTTP/S.
+
+
+Note: In this experiment, CrowdSec was disabled to allow this action to proceed, but the rules are on the configs directory.
+
+
+
+
+
 
 
 
