@@ -12,7 +12,7 @@
 The objective of this attack was to enumerate and extract Service Principal Names (SPNs) from the Active Directory environment and attempt to crack the Kerberos TGS hashes to gain unauthorized access to domain accounts.
 Following the other attacks, we are already know the credentials from an User and the Active Directory Domain.
 
-## Attack Execution Timeline:
+## Attack Execution:
 
 - Checked that Kerberos (port 88) is open:
 ```bash
