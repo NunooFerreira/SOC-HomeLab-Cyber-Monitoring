@@ -70,6 +70,24 @@ The objective of this attack was to enumerate and extract Service Principal Name
   - Shortly after the last Kerberos Service Ticket Request, a **Logoff** event (Event ID 4634) was recorded for user `labadmin`.
   - ![logoff](https://github.com/user-attachments/assets/11d039c9-4803-432e-ae34-a427b6db934a)
 
-## Summary
 
-This playbook details the step-by-step execution of a Kerberos-based attack on an Active Directory environment. By extracting SPNs and cracking Kerberos TGS hashes, the attacker was able to gain unauthorized access using compromised credentials. The monitoring of Sysmon and Windows Security logs provided clear evidence of the attack's progression, highlighting both the scanning activity and the subsequent Kerberoasting technique. This comprehensive approach demonstrates the technical process and underscores the importance of robust logging and monitoring in detecting and mitigating such attacks.
+## **Firewall Rules on pfSense to Mitigate this:**
+1- Create an Alias for Internal Systems:
+
+ - ![aliases](https://github.com/user-attachments/assets/103ebae0-d0c5-4883-b196-d6356225c08c)
+
+
+2- Block Unauthorized Kerberos Requests:
+ - ![firstrule](https://github.com/user-attachments/assets/116965fc-3f84-4b72-b76b-414d10214746)
+
+
+- This rule blocks any Kerberos traffic (port 88) from devices that are not domain controllers, which prevents unauthorized users from interacting with the Kerberos service and reduces the risk of Kerberoasting.
+
+3- Limit External and Internal LDAP Queries:
+- ![rule3](https://github.com/user-attachments/assets/d31cc115-efc6-4a93-b269-133962b478db)
+
+
+This prevents attackers from using LDAP enumeration tools (like GetUserSPNs.py), a well knowed script, to extract Service Principal Names. LDAP is only needed for trusted systems—blocking it for regular users reduces exposure, like we've just seen.
+
+Note: In this experiment, CrowdSec was disabled to allow this action to proceed.
+
