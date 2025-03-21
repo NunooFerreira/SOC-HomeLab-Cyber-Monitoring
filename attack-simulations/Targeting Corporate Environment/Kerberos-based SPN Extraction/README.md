@@ -37,18 +37,13 @@ hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracke
 
 ## **Monitoring Windows Logs**
 
-I started watching Sysmon Logs Analysis and found out that Kali's IP was trying to communicate:
-**Event ID 1 – Process Creation:**
-
-Screenshot 
-
-Then, right after I Identified multiple Event ID 3 entries in Sysmon logs, which makes it suspisious, knowing its coming from the same IP, and from external zone (DMZ): 
+I started watching Sysmon Logs Analysis and identified multiple Event ID 3 entries in Sysmon logs, which makes it suspisious, knowing its coming from the same IP, and from external zone (DMZ): 
 
 - All connections originated from IP 192.168.10.10, targeting 192.168.20.30.
 
 - Different ephemeral ports were used, suggesting automated scanning or even communication.
 
-Screenshots.
+![multipleSysmonlogs](https://github.com/user-attachments/assets/01ab753c-f8f0-42d1-8882-62f2a652937a)
 
 
 
