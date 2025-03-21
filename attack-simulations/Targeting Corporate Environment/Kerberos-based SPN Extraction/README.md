@@ -47,7 +47,7 @@ I started watching Sysmon Logs Analysis and identified multiple Event ID 3 entri
 
 
 
-With that, I went through Windows Logs Security, and found multiple found a large number of **Event ID 4769 – Kerberos Service Ticket Request**, from the same source:
+With that, I went through Windows Logs Security, and found multiple found a large number of **Event ID 4769 – Kerberos Service Ticket Request**, from the same source as well:
 
 - ![kerberos_tickets](https://github.com/user-attachments/assets/9275278e-067c-466c-a2bd-3fc551e18f81)
 
