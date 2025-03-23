@@ -13,7 +13,7 @@
 
 ## Objective
 
-The objective of this attack is to use a PowerShell Download Cradle to deliver a malicious payload from the attacker (Kali Linux) to the target Windows machine. This payload simulates establishing a persistent backdoor for remote access. This technique is commonly used to exfiltrate data, maintain long-term access, and execute malicious commands stealthily.
+The objective of this one is to use a PowerShell Download Cradle to deliver a malicious payload from kali to the target Windows user. This payload will simulate establishing a persistent backdoor for remote access, to then do basically what ever we want.
 
 ## Attack Execution Timeline
 
