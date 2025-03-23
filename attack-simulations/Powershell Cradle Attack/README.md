@@ -90,7 +90,8 @@ After successfully establishing the reverse shell, I could run every command tha
 
 ## PfSense Configuration
 
-###1- Block Unauthorized Outbound Traffic (Reverse Shell Protection)
+1- **Block Unauthorized Outbound Traffic (Reverse Shell Protection):**
+
 1. **Action:** Block
 2. **Interface:** LAN
 3. **Source:** Internal_Systems
@@ -98,17 +99,22 @@ After successfully establishing the reverse shell, I could run every command tha
 5. **Destination Port:** 4444 (or other suspicious ports)
 6. **Protocol:** TCP
 
+![rule1](https://github.com/user-attachments/assets/ba106ecb-9147-4d63-8dda-af2b43ab352b)
+
+
 **Explanation:**  
 Reverse shells typically use common TCP ports (like 4444) to establish outbound connections to an attacker’s machine, this rule blocks these outbound connections, preventing compromised systems from connecting back to kali.
 
 
-###2- Restrict PowerShell Downloads
+2- **Restrict PowerShell Downloads:**
 1. **Action:** Block
 2. **Interface:** LAN
 3. **Source:** Any
 4. **Destination:** Any
 5. **Destination Port:** 80, 443 (HTTP/HTTPS)
 6. **Advanced Options:** Application: PowerShell (requires Snort/Suricata)
+
+![rule2](https://github.com/user-attachments/assets/48c6ac50-19e7-4254-ba25-7854df7ae71b)
 
 **Explanation:**  
 PowerShell cradle attacks often download scripts via HTTP/HTTPS. This rule blocks PowerShell from making external web requests, mitigating PowerShell-based malware delivery.
