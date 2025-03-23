@@ -3,19 +3,14 @@
 
 ## Overview
 
-This project demonstrates how to create and deploy a malicious PowerShell script to establish a reverse shell on a Windows workstation. The attacker uses Kali Linux to serve the payload and capture the connection, giving them remote access to the victim's machine.
-
 - **Target:** Windows Workstation (SOC.LAB domain)
   - **IP Address:** 192.168.10.20
   - **Domain:** SOC.LAB
-- **Attacker:** Kali Linux
+- **Attacker:** Kali «
   - **IP Address:** 192.168.20.30
 
 ## Objective
-1. Create a malicious PowerShell script (malicious.ps1) to establish a reverse shell backdoor.
-2. Use a web server to serve the payload to the target Windows machine.
-3. Make the Windows user download and execute the malicious script.
-4. Gain remote access to the victim's machine and execute commands of the attacker's choice.
+Create and deploy a malicious PowerShell script to establish a reverse shell on a Windows workstation. The attacker uses Kali Linux to serve the payload and capture the connection, giving them remote access to the Windows's machine.
 
 ## Attack Execution Timeline
 
@@ -93,6 +88,34 @@ After successfully establishing the reverse shell, I could run every command tha
   ```
 
 
+## 1. pfSense Configuration
 
-Pfsense rules...
-CrowdSec ruless...
+### 1.1 Create an Alias for Internal Systems
+1. Go to **Firewall > Aliases > Add**.
+2. Name: `Internal_Systems`
+3. Add trusted IP addresses (e.g., Domain Controllers, secure endpoints).
+
+### 1.2 Block Unauthorized Outbound Traffic (Reverse Shell Protection)
+1. **Action:** Block
+2. **Interface:** LAN
+3. **Source:** Internal_Systems
+4. **Destination:** Any
+5. **Destination Port:** 4444 (or other suspicious ports)
+6. **Protocol:** TCP
+
+### 1.3 Restrict PowerShell Downloads
+1. **Action:** Block
+2. **Interface:** LAN
+3. **Source:** Any
+4. **Destination:** Any
+5. **Destination Port:** 80, 443 (HTTP/HTTPS)
+6. **Advanced Options:** Application: PowerShell (requires Snort/Suricata)
+
+### 1.4 Alert on Suspicious TCP Reverse Shell Patterns
+1. **Action:** Alert
+2. **Interface:** WAN
+3. **Source:** Any
+4. **Destination:** Internal_Systems
+5. **Destination Port:** 4444 (or other reverse shell ports)
+
+
