@@ -1,0 +1,29 @@
+# Detects PowerShell reverse shell on port 4444
+# Blocks the attacker for 15 minutes (random timmer, prob should be higher)
+name: custom_reverse_shell_detection
+description: "Detects suspicious reverse shell attempts on port 4444"
+type: leaky
+filter: |
+  evt.Meta.log_type == 'sysmon' &&
+  evt.Meta.event_id == '3' &&
+  evt.Parsed.destination_port == '4444'
+capacity: 1
+leak_speed: "10s"
+blackhole: 15m
+labels:
+  service: custom_reverse_shell
+
+# Detects PowerShell cradle downloads
+# Blocks the attacker for 20 minutes (random timmer, prob should be higher)
+name: custom_powershell_cradle_detection
+description: "Detects PowerShell cradle downloads via HTTP"
+type: leaky
+filter: |
+  evt.Meta.log_type == 'sysmon' &&
+  evt.Meta.event_id == '1' &&
+  evt.Parsed.command_line =~ /.*powershell.*iwr.*http.*/i
+capacity: 1
+leak_speed: "10s"
+blackhole: 20m
+labels:
+  service: custom_powershell_cradle
