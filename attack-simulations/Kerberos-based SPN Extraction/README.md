@@ -24,8 +24,6 @@ The objective of this attack was to enumerate and extract Service Principal Name
 
 2. **DNS Configuration Update**
    - Updated the default DNS IP to point directly to the Domain Controller.
-   - ![hash](https://github.com/user-attachments/assets/25122eab-7eb9-4de7-a62d-2ceeda7e50c9)
-
 3. **SPN Extraction**
    - Ran the `GetUserSPNs.py` script from the mpacket toolkit to request SPNs and attempt Kerberos TGS hash extraction:
      ```bash
