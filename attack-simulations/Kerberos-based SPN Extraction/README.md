@@ -34,6 +34,7 @@ The objective of this attack was to enumerate and extract Service Principal Name
    - ![hash](https://github.com/user-attachments/assets/25122eab-7eb9-4de7-a62d-2ceeda7e50c9)
 
 5. **Hash Cracking**
+   
    - Cracked the extracted Kerberos TGS hash using hashcat with the rockyou.txt wordlist, saving the results to `cracked.txt`:
      ```bash
      hashcat -m 13100 spn_hash.txt /usr/share/wordlists/rockyou.txt --force -o cracked.txt
