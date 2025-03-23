@@ -88,14 +88,9 @@ After successfully establishing the reverse shell, I could run every command tha
   ```
 
 
-## 1. pfSense Configuration
+## PfSense Configuration
 
-### 1.1 Create an Alias for Internal Systems
-1. Go to **Firewall > Aliases > Add**.
-2. Name: `Internal_Systems`
-3. Add trusted IP addresses (e.g., Domain Controllers, secure endpoints).
-
-### 1.2 Block Unauthorized Outbound Traffic (Reverse Shell Protection)
+###1- Block Unauthorized Outbound Traffic (Reverse Shell Protection)
 1. **Action:** Block
 2. **Interface:** LAN
 3. **Source:** Internal_Systems
@@ -103,7 +98,11 @@ After successfully establishing the reverse shell, I could run every command tha
 5. **Destination Port:** 4444 (or other suspicious ports)
 6. **Protocol:** TCP
 
-### 1.3 Restrict PowerShell Downloads
+**Explanation:**  
+Reverse shells typically use common TCP ports (like 4444) to establish outbound connections to an attacker’s machine, this rule blocks these outbound connections, preventing compromised systems from connecting back to kali.
+
+
+###2- Restrict PowerShell Downloads
 1. **Action:** Block
 2. **Interface:** LAN
 3. **Source:** Any
@@ -111,11 +110,10 @@ After successfully establishing the reverse shell, I could run every command tha
 5. **Destination Port:** 80, 443 (HTTP/HTTPS)
 6. **Advanced Options:** Application: PowerShell (requires Snort/Suricata)
 
-### 1.4 Alert on Suspicious TCP Reverse Shell Patterns
-1. **Action:** Alert
-2. **Interface:** WAN
-3. **Source:** Any
-4. **Destination:** Internal_Systems
-5. **Destination Port:** 4444 (or other reverse shell ports)
+**Explanation:**  
+PowerShell cradle attacks often download scripts via HTTP/HTTPS. This rule blocks PowerShell from making external web requests, mitigating PowerShell-based malware delivery.
+
+
+Note: In this experiment, CrowdSec was disabled to allow this action to proceed, but the rules are on the [configs directory](https://github.com/NunooFerreira/SOC-Lab-Home-Cybersecurity-Monitoring/blob/main/configs/CrowdSec_configs/custom_reverse_powershell.yaml).
 
 
