@@ -72,17 +72,32 @@ After successfully establishing the reverse shell, I could run every command tha
   ```bash
   whoami
   ```
+  
+![whoami](https://github.com/user-attachments/assets/7a988e9f-9477-4124-ba5f-e5a70b6656cb)
+
+
 
 - **`tasklist`** – To list all running processes:
   ```bash
   tasklist | Out-String
   ```
+![tasklist](https://github.com/user-attachments/assets/9751f108-cbbe-4467-b7e1-49f94d57b2cb)
 
-- **`net user`** – To list all user accounts on the system:
+
+- **`ipconfig`** – To display the network configuration, including IP addresses:
   ```bash
   hostname
   ```
+  
+![ipconfig](https://github.com/user-attachments/assets/78b34a03-65f9-4b65-b641-ba866db86f93)
 
+
+- **`systeminfo`** – To gather detailed information about the operating system and hardware:
+  ```bash
+  systeminfo
+  ```
+  
+![systeminfo](https://github.com/user-attachments/assets/3f524861-1014-4602-b281-2b24def33d74)
 
 
 ## PfSense Configuration
