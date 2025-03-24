@@ -70,7 +70,7 @@ The attack simulation followed a multi-step process mimicking real-world intrusi
 
 1. **Botnet Simulation:** Expand the reverse shell into a **Command & Control (C2)** infrastructure to simulate a botnet.  
 2. **Log Analysis Automation:** Implement automated scripts to parse **Sysmon** and **CrowdSec** logs for quicker threat detection.  
-3. **Advanced Mitigation:** Explore integrating **Suricata** for network-based intrusion detection and honeypots to attract and analyze attacker behavior.  
+3. **Implement a SIEM**
 
 ---
 
@@ -78,15 +78,17 @@ The attack simulation followed a multi-step process mimicking real-world intrusi
 
 1. Set up virtual machines for **pfSense**, **Active Directory**, and a **Windows Workstation**.  
 2. Configure network segmentation (LAN and DMZ).  
-3. Install **Sysmon** on the Windows machines and **CrowdSec** on all servers.  
+3. Install **Sysmon** and **CrowdSec** on the Windows Workstation and Active Directory Server.  
 4. Simulate attacks using **Hydra**, **Impacket**, and **Netcat**.  
-5. Monitor and analyze logs using **CrowdSec** dashboards and Windows Event Viewer.  
+5. Monitor and analyze logs using **CrowdSec** dashboards and Windows Event Viewer with the help of Sysmon.  
 
 ---
 
 ## References
 
+- [LetsDefend](https://app.letsdefend.io/training/lessons/building-a-soc-lab-at-home)
 - [Hydra – Brute Force Tool](https://hackviser.com/tactics/tools/hydra)  
 - [BadBlood – AD Misconfiguration Tool](https://github.com/davidprowe/BadBlood)  
 - [Hashcat – Password Cracking](https://github.com/hashcat/hashcat)  
-- [CrowdSec – Collaborative Security](https://www.crowdsec.net/)  
+- [CrowdSec – Collaborative Security](https://www.crowdsec.net/)
+
