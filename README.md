@@ -20,6 +20,11 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 | Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   | LAN     |
 | Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DMZ     |
 
+## Attack Architecture
+
+![teste](https://github.com/user-attachments/assets/80337873-d74b-49d9-9850-ca48d108e11c)
+
+
 
 ## Tools and Usage
 
@@ -33,6 +38,9 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 ## Attack Simulation Sequence
 
 Initially, [Hydra](https://hackviser.com/tactics/tools/hydra) was used to launch a brute-force attack against the RDP service, aiming to guess the password of a random user on a Windows 10 workstation after a leaked users list was discovered online. Next, while operating from that user's machine within the SOC.LAB domain that was found from brute-force, an attempt was made to extract Kerberos Ticket Granting Service (TGS) hashes from the Active Directory Domain Controller. The extracted hashes were then cracked offline using [Hashcat](https://github.com/hashcat/hashcat) with the [rockyou.txt](https://www.kaggle.com/datasets/wjburns/common-password-list-rockyoutxt) wordlist along with additional tools, ultimately resulting in a list of valid usernames and passwords. With these valid credentials, remote access via RDP was gained, and one user was selected to access the Active Directory. Once inside, data was compressed and exfiltrated via [Netcat](https://nmap.org/ncat/) . Finally, an AD user was induced to install malware that allowed the establishment of a reverse shell, enabling remote command execution and potentially starting a botnet with a command and control server, for future work.
+
+
+
 
 
 
