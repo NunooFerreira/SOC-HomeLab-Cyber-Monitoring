@@ -70,36 +70,22 @@ After the Windows user has downloaded and executed the malicious payload,it bypa
 After successfully establishing the reverse shell, I could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
 
 - **`whoami`** – To confirm the user currently logged in:
-  
-  ```bash
-  whoami
-  ```
+
 ![whoami](https://github.com/user-attachments/assets/7a988e9f-9477-4124-ba5f-e5a70b6656cb)
 
 
 
 - **`tasklist`** – To list all running processes:
   
-  ```bash
-  tasklist | Out-String
-  ```
 ![tasklist](https://github.com/user-attachments/assets/9751f108-cbbe-4467-b7e1-49f94d57b2cb)
 
 
 - **`ipconfig`** – To display the network configuration, including IP addresses:
   
-  ```bash
-  hostname
-  ```
-  
 ![ipconfig](https://github.com/user-attachments/assets/78b34a03-65f9-4b65-b641-ba866db86f93)
 
 
 - **`systeminfo`** – To gather detailed information about the operating system and hardware:
-  
-  ```bash
-  systeminfo
-  ```
   
 ![systeminfo](https://github.com/user-attachments/assets/3f524861-1014-4602-b281-2b24def33d74)
 
