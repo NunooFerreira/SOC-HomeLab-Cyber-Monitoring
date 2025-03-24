@@ -65,7 +65,7 @@ nc -lvnp 4444
 
 After the Windows user has downloaded and executed the malicious payload,it bypasses the PowerShell execution policy and downloads the malicious script from the attacker’s web server to the target machine. Once executed, the script initiates the reverse shell and connects back to my kali’s machine.
 
-Here we can see that the User has succefully downloaded the Malware:
+Here we can see that the User has succefully downloaded the Malware and the commands are being executed via **malware.ps1** (underlined in red):
 
 ![downloadedMalware](https://github.com/user-attachments/assets/1462d7bf-69e2-41a0-9a34-2c50f69edf1e)
 
@@ -75,6 +75,11 @@ And on the Kali machine we have accessed the Powershell:
 
 
 ## **Monitoring Windows Logs**
+
+Using Sysmon Logs we can see that the Kali machine started a connection with the Victim Machine, with the ID:3 :
+
+![FirstConnection1](https://github.com/user-attachments/assets/251d4a2d-9e59-4406-824a-bacd94719d72)
+
 
 After successfully establishing the reverse shell, We can see what commands the could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
 
