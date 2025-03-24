@@ -48,7 +48,7 @@ This project sets up a simple Security Operations Center (SOC) lab to simulate, 
 
 The attack simulation followed a multi-step process to mimick a real-world scenario:
 
-1. **Brute-Force RDP Attack:**  
+1. **[Brute-Force RDP Attack:](https://github.com/NunooFerreira/SOC-HomeLab-Cyber-Monitoring/tree/main/attack-simulations/rdp-bruteforce#simulated-attack-rdp-brute-force)**  
    - Used [Hydra](https://hackviser.com/tactics/tools/hydra) to launch a brute-force attack on the Windows 10 Workstation RDP service.  
    - This attack aimed to guess user credentials from a leaked user list of the soc.lab domain.  
 
