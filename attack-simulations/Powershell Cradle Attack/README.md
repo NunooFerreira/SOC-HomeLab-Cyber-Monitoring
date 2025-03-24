@@ -53,6 +53,7 @@ $client.Close()
 ### 2. **Set Up HTTP Server to Serve Payload**
 
 Once the payload script was created, I hosted an HTTP web server just to simulate the Windows user to download malware through a link. Meanwhile I used Netcat to listen for an incoming connection from the reverse shell:
+
 ```bash
 python3 -m http.server 80
 ```
@@ -69,15 +70,16 @@ After the Windows user has downloaded and executed the malicious payload,it bypa
 After successfully establishing the reverse shell, I could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
 
 - **`whoami`** – To confirm the user currently logged in:
+  
   ```bash
   whoami
   ```
-  
 ![whoami](https://github.com/user-attachments/assets/7a988e9f-9477-4124-ba5f-e5a70b6656cb)
 
 
 
 - **`tasklist`** – To list all running processes:
+  
   ```bash
   tasklist | Out-String
   ```
@@ -85,6 +87,7 @@ After successfully establishing the reverse shell, I could run every command tha
 
 
 - **`ipconfig`** – To display the network configuration, including IP addresses:
+  
   ```bash
   hostname
   ```
@@ -93,6 +96,7 @@ After successfully establishing the reverse shell, I could run every command tha
 
 
 - **`systeminfo`** – To gather detailed information about the operating system and hardware:
+  
   ```bash
   systeminfo
   ```
