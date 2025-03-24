@@ -123,7 +123,7 @@ Explanation:
 -  This prevents exfiltration via FTP/SSH/HTTP/S.
 
 
-Note: In this experiment, CrowdSec was disabled to allow this action to proceed, but the rules are on the [configs directory](https://github.com/NunooFerreira/SOC-Lab-Home-Cybersecurity-Monitoring/blob/main/configs/CrowdSec_configs/custom_exfiltration_watch.yaml).
+**Note:** In this experiment, CrowdSec was disabled to allow this action to proceed, but the rules are on the [configs directory](https://github.com/NunooFerreira/SOC-Lab-Home-Cybersecurity-Monitoring/blob/main/configs/CrowdSec_configs/custom_exfiltration_watch.yaml).
 
 
 
