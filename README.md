@@ -20,7 +20,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 | Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   | LAN     |
 | Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DMZ     |
 
-## Attack Architecture
+## Network Architecture
 
 ![teste](https://github.com/user-attachments/assets/80337873-d74b-49d9-9850-ca48d108e11c)
 
