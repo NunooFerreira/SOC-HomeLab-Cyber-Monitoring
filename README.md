@@ -16,6 +16,12 @@ This project sets up a simple Security Operations Center (SOC) lab to simulate, 
 
 ---
 
+## Network Architecture
+
+![Network Architecture](https://github.com/user-attachments/assets/3a6ae53d-8579-4038-8958-1352c3359474)
+
+---
+
 ## Network Configuration
 
 | Device                 | IP Address       | Gateway        | Subnet Mask     | Zone    |
@@ -24,12 +30,6 @@ This project sets up a simple Security Operations Center (SOC) lab to simulate, 
 | Active Directory (SOC-AD1) | 192.168.10.10    | 192.168.10.1  | 255.255.255.0   | LAN     |
 | Windows Workstation    | 192.168.10.20    | 192.168.10.1   | 255.255.255.0   | LAN     |
 | Kali Linux             | 192.168.20.30    | 192.168.20.1   | 255.255.255.0   | DMZ     |
-
----
-
-## Network Architecture
-
-![Network Architecture](https://github.com/user-attachments/assets/3a6ae53d-8579-4038-8958-1352c3359474)
 
 ---
 
