@@ -1,0 +1,10 @@
+Mar 24 21:00:00.689 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Mar 24 21:00:00.690 HYPERVISOR: Started on IP = localhost, TCP port = 8520.
+Mar 24 21:00:01.185 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 24 21:00:01.186 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Boost\Ambiente de Trabalho\SOCLABgns3\project-files\dynamips 
+Mar 24 21:00:01.186 GENERAL: working_dir=C:\Users\Boost\Ambiente de Trabalho\SOCLABgns3\project-files\dynamips
+Mar 24 21:00:01.186 HYPERVISOR: exec_cmd: atmsw create CrowdSec2 
+Mar 24 21:00:03.509 HYPERVISOR: exec_cmd: atmsw delete CrowdSec2 
+Mar 24 21:00:03.511 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 24 21:00:03.716 HYPERVISOR: Stopped.
+Mar 24 21:00:03.716 GENERAL: reset done.

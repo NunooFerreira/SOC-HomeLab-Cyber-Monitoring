@@ -1,0 +1,10 @@
+Mar 24 20:59:57.663 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Mar 24 20:59:57.665 HYPERVISOR: Started on IP = localhost, TCP port = 8504.
+Mar 24 20:59:58.165 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 24 20:59:58.165 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\Boost\Ambiente de Trabalho\SOCLABgns3\project-files\dynamips 
+Mar 24 20:59:58.165 GENERAL: working_dir=C:\Users\Boost\Ambiente de Trabalho\SOCLABgns3\project-files\dynamips
+Mar 24 20:59:58.165 HYPERVISOR: exec_cmd: ethsw create Switch 
+Mar 24 21:00:03.508 HYPERVISOR: exec_cmd: ethsw delete Switch 
+Mar 24 21:00:03.510 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 24 21:00:03.732 HYPERVISOR: Stopped.
+Mar 24 21:00:03.732 GENERAL: reset done.
