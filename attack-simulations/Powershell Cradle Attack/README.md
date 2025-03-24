@@ -10,11 +10,11 @@
   - **IP Address:** 192.168.20.30
 
 ## Objective
-Create and deploy a malicious PowerShell script to establish a reverse shell on a Windows workstation. The attacker uses Kali Linux to serve the payload and capture the connection, giving them remote access to the Windows's machine.
+Create and deploy a Malware PowerShell script to establish a reverse shell on a Windows workstation. The attacker uses Kali Linux to serve the payload and capture the connection, giving them remote access to the Windows's machine.
 
 ## Attack Execution Timeline
 
-### 1. **Create Malicious PowerShell Payload**
+### 1. **Create Malware PowerShell Payload**
 
 Firstly, I created a malicious PowerShell script (`malicious.ps1`) that establishes a reverse shell back to my Kali's machine, based on this [git](https://github.com/das-lab/mpsd) and [post](https://learn.microsoft.com/en-us/defender-endpoint/run-detection-test?source=recommendations&view=o365-worldwide):
 
@@ -65,9 +65,18 @@ nc -lvnp 4444
 
 After the Windows user has downloaded and executed the malicious payload,it bypasses the PowerShell execution policy and downloads the malicious script from the attacker’s web server to the target machine. Once executed, the script initiates the reverse shell and connects back to my kali’s machine.
 
-### 5. **Execute Commands on the Target Machine**
+Here we can see that the User has succefully downloaded the Malware:
 
-After successfully establishing the reverse shell, I could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
+![downloadedMalware](https://github.com/user-attachments/assets/1462d7bf-69e2-41a0-9a34-2c50f69edf1e)
+
+And on the Kali machine we have accessed the Powershell:
+
+![Reverse_Shell](https://github.com/user-attachments/assets/f88cc2f3-81a3-4c9a-9e44-9c349c03330b)
+
+
+## **Monitoring Windows Logs**
+
+After successfully establishing the reverse shell, We can see what commands the could run every command that i wanted to on that Windows machine or gather information about the system. Some useful commands executed during the attack include:
 
 - **`whoami`** – To confirm the user currently logged in:
 
