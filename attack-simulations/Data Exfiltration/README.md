@@ -24,7 +24,7 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 Gain remote access to the target Windows 10 workstation via RDP using the discovered credentials. The following command is used to initiate the RDP session:
 
 ```bash
-xfreerdp3 /u:attacker_user /p:<discovered_password> /v:192.168.10.20
+xfreerdp3 /u:labadmin /p:Root1234! /v:192.168.10.20
 ````
 Once logged into the target system, a PowerShell command is executed to compress the sensitive data into a ZIP file:
 
