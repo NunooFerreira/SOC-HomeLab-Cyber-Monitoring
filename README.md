@@ -22,7 +22,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 
 ## Network Architecture
 
-![teste](https://github.com/user-attachments/assets/80337873-d74b-49d9-9850-ca48d108e11c)
+![teste](https://github.com/user-attachments/assets/3a6ae53d-8579-4038-8958-1352c3359474)
 
 
 
@@ -42,29 +42,20 @@ Initially, [Hydra](https://hackviser.com/tactics/tools/hydra) was used to launch
 
 
 
+┌─────────────────────────────────────┐           ┌──────────────────────────────────────┐           ┌─────────────────────────────────────┐  
+│ PHASE 1: Brute-force RDP (Hydra)    │           │ PHASE 2: Kerberos TGS Hash Extraction│           │ PHASE 3: Hashcat Cracking           │  
+│ Target: Windows WS (192.168.10.20)  │  -----►   │ From: AD Controller (192.168.10.10)  │   -----►  │ rockyou.txt → Valid Credentials List│        
+│                                     │           │                                      │           |                                     |
+└─────────────────────────────────────┘           └──────────────────────────────────────┘           └─────────────────────────────────────┘
+           
 
-
-┌──────────────────────┐              [Kali Linux: 192.168.20.30]  
-│         START         │  
-└──────────┬─────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 1: Brute-force RDP (Hydra)    │  
-│ Target: Windows WS (192.168.10.20)  │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 2: Kerberos TGS Hash Extraction  
-│ From: AD Controller (192.168.10.10) │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
+   
+            ▼  
 ┌─────────────────────────────────────┐  
 │ PHASE 3: Hashcat Cracking           │  
 │ rockyou.txt → Valid Credentials List│  
-└──────────┬──────────────────────────┘  
+└──────────┬──────────────────────────┘
+
            │  
            ▼  
 ┌─────────────────────────────────────┐  
