@@ -42,47 +42,54 @@ Initially, [Hydra](https://hackviser.com/tactics/tools/hydra) was used to launch
 
 
 
-┌─────────────────────────────────────┐           ┌──────────────────────────────────────┐           ┌─────────────────────────────────────┐  
-│ PHASE 1: Brute-force RDP (Hydra)    │           │ PHASE 2: Kerberos TGS Hash Extraction│           │ PHASE 3: Hashcat Cracking           │  
-│ Target: Windows WS (192.168.10.20)  │  -----►   │ From: AD Controller (192.168.10.10)  │   -----►  │ rockyou.txt → Valid Credentials List│        
-│                                     │           │                                      │           |                                     |
-└─────────────────────────────────────┘           └──────────────────────────────────────┘           └─────────────────────────────────────┘
-           
-
-   
-            ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 3: Hashcat Cracking           │  
-│ rockyou.txt → Valid Credentials List│  
-└──────────┬──────────────────────────┘
-
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 4: RDP Access to Domain       │  
-│ (Using Stolen Credentials)          │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 5: AD Data Collection         │  
-│ (Compress Sensitive Files)          │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 6: Exfiltration via Netcat    │  
-│ (Data → Attacker's Server)          │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 7: Malware Deployment         │  
-│ (Reverse Shell Payload)             │  
-└──────────┬──────────────────────────┘  
-           │  
-           ▼  
-┌─────────────────────────────────────┐  
-│ PHASE 8: Persistent Access          │  
-│ [Potential Botnet C2 Setup]         │  
-└─────────────────────────────────────┘  
+                      ┌──────────────────────┐                
+                      │         START        │  
+                      └──────────┬───────────┘
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 1: Brute-force RDP (Hydra)    │  
+                      │ Target: Windows WS (192.168.10.20)  │  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌──────────────────────────────────────┐  
+                      │ PHASE 2: Kerberos TGS Hash Extraction│  
+                      │ From: AD Controller (192.168.10.10)  │  
+                      └──────────┬───────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 3: Hashcat Cracking           │  
+                      │ rockyou.txt → Valid Credentials List│  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 4: RDP Access to Domain       │  
+                      │ (Using Stolen Credentials)          │  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 5: AD Data Collection         │  
+                      │ (Compress Sensitive Files)          │  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 6: Exfiltration via Netcat    │  
+                      │ (Data → Attacker's Server)          │  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 7: Malware Deployment         │  
+                      │ (Reverse Shell Payload)             │  
+                      └──────────┬──────────────────────────┘  
+                                 │  
+                                 ▼  
+                      ┌─────────────────────────────────────┐  
+                      │ PHASE 8: Persistent Access          │  
+                      │ [Potential Botnet C2 Setup]         │  
+                      └─────────────────────────────────────┘  
