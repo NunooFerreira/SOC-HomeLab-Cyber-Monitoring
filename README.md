@@ -35,7 +35,7 @@ This project sets up a Security Operations Center (SOC) lab to simulate, detect,
 Initially, [Hydra](https://hackviser.com/tactics/tools/hydra) was used to launch a brute-force attack against the RDP service, aiming to guess the password of a random user on a Windows 10 workstation after a leaked users list was discovered online. Next, while operating from that user's machine within the SOC.LAB domain that was found from brute-force, an attempt was made to extract Kerberos Ticket Granting Service (TGS) hashes from the Active Directory Domain Controller. The extracted hashes were then cracked offline using [Hashcat](https://github.com/hashcat/hashcat) with the [rockyou.txt](https://www.kaggle.com/datasets/wjburns/common-password-list-rockyoutxt) wordlist along with additional tools, ultimately resulting in a list of valid usernames and passwords. With these valid credentials, remote access via RDP was gained, and one user was selected to access the Active Directory. Once inside, data was compressed and exfiltrated via [Netcat](https://nmap.org/ncat/) . Finally, an AD user was induced to install malware that allowed the establishment of a reverse shell, enabling remote command execution and potentially starting a botnet with a command and control server, for future work.
 
 
-## Attack Diagram Flow:
+
 ┌──────────────────────┐              [Kali Linux: 192.168.20.30]  
 │         START         │  
 └──────────┬─────────────┘  
@@ -87,4 +87,3 @@ Initially, [Hydra](https://hackviser.com/tactics/tools/hydra) was used to launch
 │ PHASE 8: Persistent Access          │  
 │ [Potential Botnet C2 Setup]         │  
 └─────────────────────────────────────┘  
-
