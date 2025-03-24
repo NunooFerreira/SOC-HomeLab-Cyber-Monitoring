@@ -52,15 +52,15 @@ The attack simulation followed a multi-step process to mimick a real-world scena
    - Used [Hydra](https://hackviser.com/tactics/tools/hydra) to launch a brute-force attack on the Windows 10 Workstation RDP service.  
    - This attack aimed to guess user credentials from a leaked user list of the soc.lab domain.  
 
-2. **Kerberoasting Attack:**  
+2. **[Kerberoasting Attack:](https://github.com/NunooFerreira/SOC-HomeLab-Cyber-Monitoring/tree/main/attack-simulations/Kerberos-based%20SPN%20Extraction#active-directory-attack-playbook-kerberos-based-spn-extraction-and-credential-compromise)**  
    - With access to the compromised workstation, [Impacket](https://github.com/fortra/impacket) was used to extract **Kerberos Ticket Granting Service (TGS) hashes** from the AD controller.  
    - These hashes were cracked offline using [Hashcat](https://github.com/hashcat/hashcat) and the **rockyou.txt** wordlist, revealing valid usernames and passwords.  
 
-3. **Remote Access and Data Exfiltration:**  
+3. **[Remote Access and Data Exfiltration:](https://github.com/NunooFerreira/SOC-HomeLab-Cyber-Monitoring/tree/main/attack-simulations/Data%20Exfiltration#active-directory-attack-playbook-using-rdp-and-data-exfiltration)**  
    - Using the obtained credentials, remote access via RDP was established.  
    - Data was compressed and exfiltrated using [Netcat](https://nmap.org/ncat/), simulating a real-world data breach.  
 
-4. **Reverse Shell Backdoor:**  
+4. **[Reverse Shell Backdoor:](https://github.com/NunooFerreira/SOC-HomeLab-Cyber-Monitoring/tree/main/attack-simulations/Powershell%20Cradle%20Attack#reverse-shell-backdoor-with-powershell-cradle-attack)**  
    - A PowerShell-based reverse shell was deployed to maintain persistent access.  
    - This backdoor allows remote command execution and could serve as a basis for a botnet in future simulations.  
 
