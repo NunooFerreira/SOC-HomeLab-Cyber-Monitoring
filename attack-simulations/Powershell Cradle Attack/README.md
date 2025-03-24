@@ -69,7 +69,7 @@ Here we can see that the User has succefully downloaded the Malware and the comm
 
 ![downloadedMalware](https://github.com/user-attachments/assets/1462d7bf-69e2-41a0-9a34-2c50f69edf1e)
 
-And on the Kali machine we have accessed the Powershell:
+And on the Kali machine we have access to the Windows Powershell:
 
 ![Reverse_Shell](https://github.com/user-attachments/assets/f88cc2f3-81a3-4c9a-9e44-9c349c03330b)
 
