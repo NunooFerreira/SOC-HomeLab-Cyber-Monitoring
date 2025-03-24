@@ -80,25 +80,14 @@ After successfully establishing the reverse shell, I could run every command tha
 
 - **`net user`** – To list all user accounts on the system:
   ```bash
-  net user | Format-Table
+  hostname
   ```
 
-- **`net user labadmin`** – To get detailed information about the `labadmin` user:
-  ```bash
-  net user labadmin
-  ```
 
 
 ## PfSense Configuration
 
 1- **Block Unauthorized Outbound Traffic (Reverse Shell Protection):**
-
-1. **Action:** Block
-2. **Interface:** LAN
-3. **Source:** Internal_Systems
-4. **Destination:** Any
-5. **Destination Port:** 4444 (or other suspicious ports)
-6. **Protocol:** TCP
 
 ![rule1](https://github.com/user-attachments/assets/ba106ecb-9147-4d63-8dda-af2b43ab352b)
 
@@ -108,12 +97,6 @@ Reverse shells typically use common TCP ports (like 4444) to establish outbound 
 
 
 2- **Restrict PowerShell Downloads:**
-1. **Action:** Block
-2. **Interface:** LAN
-3. **Source:** Any
-4. **Destination:** Any
-5. **Destination Port:** 80, 443 (HTTP/HTTPS)
-6. **Advanced Options:** Application: PowerShell (requires Snort/Suricata)
 
 ![rule2](https://github.com/user-attachments/assets/48c6ac50-19e7-4254-ba25-7854df7ae71b)
 
