@@ -46,11 +46,11 @@ This project sets up a simple Security Operations Center (SOC) lab to simulate, 
 
 ## Attack Simulation Sequence
 
-The attack simulation followed a multi-step process mimicking real-world intrusion tactics:
+The attack simulation followed a multi-step process to mimick a real-world scenario:
 
 1. **Brute-Force RDP Attack:**  
    - Used [Hydra](https://hackviser.com/tactics/tools/hydra) to launch a brute-force attack on the Windows 10 Workstation RDP service.  
-   - This attack aimed to guess user credentials from a leaked user list.  
+   - This attack aimed to guess user credentials from a leaked user list of the soc.lab domain.  
 
 2. **Kerberoasting Attack:**  
    - With access to the compromised workstation, [Impacket](https://github.com/fortra/impacket) was used to extract **Kerberos Ticket Granting Service (TGS) hashes** from the AD controller.  
